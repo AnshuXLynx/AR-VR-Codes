@@ -1,0 +1,34 @@
+using UnityEngine;
+
+public class Mover : MonoBehaviour
+{
+    [SerializeField]float movespeed = 21f;
+    
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        PrintInstruction();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+     moveplayer();
+    }
+
+    void PrintInstruction()
+    {
+      Debug.Log("Welcome to the game!");
+      Debug.Log("Controls are WASD as usual!");
+      Debug.Log("Don't bump at the objects!");
+    }
+
+    void moveplayer()
+    {
+      float xValue = Input.GetAxis("Horizontal") * Time.deltaTime * movespeed;
+    float yval = Input.GetAxis("Jump") * Time.deltaTime * movespeed;
+    float zval = Input.GetAxis("Vertical") * Time.deltaTime * movespeed;
+      transform.Translate(xValue, yval, zval); 
+    }
+
+}
